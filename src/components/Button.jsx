@@ -1,20 +1,16 @@
-import React from 'react'
+import React from "react";
 
-export default function Button(
-    { children,
-        type = 'button',
-        bgColor = 'bg-blue-600',
-        textColor = 'text-white',
-        className = '',   //empty because  we don't want to override the default classes
-        ...props
-    }
-
-) {
-
+export default function Button({
+    children,
+    type = "button",
+    bgColor = "bg-blue-600",
+    textColor = "text-white",
+    className = "",
+    ...props
+}) {
     return (
-        <button className={`px-4 py-2 rounded-lg${className} ${bgColor} ${textColor}`} {...props}>
+        <button className={`px-4 py-2 rounded-lg ${bgColor} ${textColor} ${className}`} {...props}>
             {children}
         </button>
-    )
+    );
 }
-

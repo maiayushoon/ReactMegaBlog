@@ -1,5 +1,4 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { login as authLogin } from "../store/authSlice";
 import { Button, Input, Logo } from "./index";
@@ -26,58 +25,71 @@ function Login() {
       setError(error.message);
     }
   };
+
   return (
-    <div
-    className='flex items-center justify-center w-full'
-    >
-        <div className={`mx-auto w-full max-w-lg bg-gray-100 rounded-xl p-10 border border-black/10`}>
+    <div className="flex items-center justify-center w-full  p-16">
+      <div
+        className={`mx-auto w-full max-w-lg rounded-xl p-10 border border-coffee`}
+      >
         <div className="mb-2 flex justify-center">
-                    <span className="inline-block w-full max-w-[100px]">
-                        <Logo width="100%" />
-                    </span>
+          <span className="inline-block w-full max-w-[100px]">
+            <Logo width="100%" />
+          </span>
         </div>
-        <h2 className="text-center text-2xl font-bold leading-tight">Sign in to your account</h2>
-        <p className="mt-2 text-center text-base text-black/60">
-                    Don&apos;t have any account?&nbsp;
-                    <Link
-                        to="/signup"
-                        className="font-medium text-primary transition-all duration-200 hover:underline"
-                    >
-                        Sign Up
-                    </Link>
+        <h2 className="text-center text-2xl text-coffee  font-bold leading-tight">
+          Sign in to your account
+        </h2>
+        <p className="mt-2 text-center text-base font-semibold text-coffee/70">
+          Don&apos;t have any account?&nbsp;
+          <Link
+            to="/signup"
+            className="font-bold text-xl text-coffee text-primary transition-all duration-200 hover:underline"
+          >
+            Sign Up
+          </Link>
         </p>
         {error && <p className="text-red-600 mt-8 text-center">{error}</p>}
-        <form onSubmit={handleSubmit(login)} className='mt-8'>
-            <div className='space-y-5'>
-                <Input
+        <form onSubmit={handleSubmit(login)} className="mt-8">
+          <div className="space-y-5 bg-gray-50">
+            <div className="text-coffee text-xl font-medium leading-loose">
+              <Input
                 label="Email: "
                 placeholder="Enter your email"
                 type="email"
                 {...register("email", {
-                    required: true,
-                    validate: {
-                        matchPatern: (value) => /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(value) ||
-                        "Email address must be a valid address",
-                    }
+                  required: true,
+                  validate: {
+                    matchPatern: (value) =>
+                      /^\w+([.-]?\w+)*@\w+([.-]?\w+)*(\.\w{2,3})+$/.test(
+                        value
+                      ) || "Email address must be a valid address",
+                  },
                 })}
-                />
-                <Input
+              />
+            </div>
+            <div className="text-coffee  text-xl font-medium leading-loose ">
+              <Input
                 label="Password: "
                 type="password"
                 placeholder="Enter your password"
                 {...register("password", {
-                    required: true,
+                  required: true,
                 })}
-                />
-                <Button
-                type="submit"
-                className="w-full"
-                >Sign in</Button>
+              />
             </div>
+            <div className="flex justify-center pt">
+              <Button
+                type="submit"
+                className=" text-cream font-bold bg-coffee border "
+              >
+                Sign in
+              </Button>
+            </div>
+          </div>
         </form>
-        </div>
+      </div>
     </div>
-  )
+  );
 }
 
 export default Login;
