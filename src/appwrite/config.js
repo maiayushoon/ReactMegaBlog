@@ -35,7 +35,7 @@ export class Service{
             console.log("Appwrite service :: createPost :: error", error);
         }
     }
-
+    
     async updatePost(slug, { title, userId, featuredImage, status, content }) {
         try {
             return await this.databases.updateDocument(conf.appwriteDatabaseId, // Database ID
@@ -86,7 +86,7 @@ export class Service{
 
     async getPosts(queries = [Query.equal("status", "active")]) {
         try {
-            return await this.databases.databases.listDocuments(
+            return await this.databases.listDocuments(
                 conf.appwriteDatabaseId, // Database ID
                 conf.appwriteCollectionId,
                 queries,

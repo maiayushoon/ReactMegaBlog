@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import appwriteService from "../appwrite/config";
-import {Container, PostCard} from '../components'
+import { Container, PostCard } from '../components'
 
 function Home() {
     const [posts, setPosts] = useState([])
@@ -12,7 +12,7 @@ function Home() {
             }
         })
     }, [])
-  
+
     if (posts.length === 0) {
         return (
             <div className="w-full py-8 mt-4 text-center">
@@ -43,5 +43,4 @@ function Home() {
     )
 }
 
-
-export default Home;
+export default Home
